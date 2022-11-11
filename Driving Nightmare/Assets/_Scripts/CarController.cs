@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
-    public float CarSpeed = 3f;
+    public float CarSpeed = 50f;
+    public float SteerStrength = 20f;
     private EventHandler _eH;
     private Vector2 _input;
 
@@ -36,6 +37,6 @@ public class CarController : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(Vector3.forward * CarSpeed * Time.deltaTime);
-        transform.Rotate(Vector3.up * _input.x * Time.deltaTime * 100f);
+        transform.Rotate(Vector3.up * _input.x * Time.deltaTime * SteerStrength);
     }
 }
