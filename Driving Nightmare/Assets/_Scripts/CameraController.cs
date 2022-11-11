@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
         else
         {
             // new shake target inside sphere
-            _shakeTarget = Random.insideUnitSphere;
+            _shakeTarget = Random.insideUnitSphere * 0.3f;
             _shakeTime = 0f;
             _oldPos = transform.localPosition;
             _shakeDurationFactor = 1f + Vector3.Distance(_oldPos, _shakeTarget);
