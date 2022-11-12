@@ -69,15 +69,17 @@ public class StreetChunk
         go.AddComponent<MeshFilter>().mesh = Mesh;
         go.AddComponent<MeshRenderer>().materials = _materials;
     }
-    private Vector2 Interpolate(Vector2 a, Vector2 b, float t)
+    public static Vector2 Interpolate(Vector2 a, Vector2 b, float t)
     {
         return new Vector2(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
     }
-
-    private Vector3 Interpolate(Vector3 a, Vector3 b, float t)
+    // inperpolation between x and y: x + (y-x) * t
+    public static Vector3 Interpolate(Vector3 a, Vector3 b, float t)
     {
         return new Vector3(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, a.z + (b.z - a.z) * t);
     }
+
+
     private void FillVertices(float[] _subMeshFactors, Vector3 startDir, Vector3 target)
     {
         Vector3 currPos = _startPos;
