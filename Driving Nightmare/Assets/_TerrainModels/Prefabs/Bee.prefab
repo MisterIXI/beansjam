@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2347208148690739689}
   - component: {fileID: 1674546267504651852}
   - component: {fileID: 3520083987936762502}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7167330057194349110}
   - component: {fileID: 7257010769927608373}
   - component: {fileID: 3820213954373854424}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 7623766063053424187}
   - component: {fileID: 1071298319696800210}
   - component: {fileID: 5876466613622055375}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 2284396708508475311}
   - component: {fileID: 745422150560513410}
   - component: {fileID: 5521460168554865683}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

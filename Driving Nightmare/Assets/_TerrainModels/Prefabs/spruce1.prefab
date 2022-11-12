@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8246567251587515625}
   - component: {fileID: 6166912715717521443}
   - component: {fileID: 5438279582800403210}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: spruce1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 5662636618931048950}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 10.71, y: 10.71, z: 10.71}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2192802610351388310}
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2192802610351388310}
   - component: {fileID: 589054843091834082}
   - component: {fileID: 2424986551809055352}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3274850726583234491}
   - component: {fileID: 6897058884945992804}
   - component: {fileID: 5669659626551908457}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6296922165058523014}
   - component: {fileID: 1688458907138785715}
   - component: {fileID: 6295866413708896032}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 8457857653531817269}
   - component: {fileID: 4025779736647185781}
   - component: {fileID: 3050194624483966393}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 7655343155429630382}
   - component: {fileID: 8734996531494257993}
   - component: {fileID: 5061135360579311047}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Void
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8470331378660659419}
   - component: {fileID: 4765778276430307198}
   - component: {fileID: 7333977158965406644}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beehive
   m_TagString: Untagged
   m_Icon: {fileID: 0}

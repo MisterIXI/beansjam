@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4215217887149884492}
   - component: {fileID: 4250315064442685098}
   - component: {fileID: 5000364907735869788}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Nails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4124458389273650631}
   - component: {fileID: 1050146408512236130}
   - component: {fileID: 2987621383981686440}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fence1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,8 +110,8 @@ Transform:
   m_GameObject: {fileID: 3636328640460455805}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.84, y: 1.84, z: 1.84}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4215217887149884492}
   m_Father: {fileID: 0}
