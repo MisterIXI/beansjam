@@ -73,6 +73,7 @@ public class StreetCreator : MonoBehaviour
         _currPos = newSC.EndPos;
         _currDir = newSC.EndDir;
         _lastDir = newSC.TargetChange;
+        newChunk.AddComponent<MeshCollider>();
 
         if (_streetChunks.Count > 10)
         {
