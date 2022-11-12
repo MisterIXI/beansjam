@@ -44,7 +44,7 @@ public class StreetCreator : MonoBehaviour
     {
         // if(_streetChunkPositions.Count > 0)
         //         Debug.Log("Furthest Z: " + _streetChunkPositions[_streetChunkPositions.Count - 1].z);
-        if (_streetChunkObjects.Count == 0 || _streetChunkPositions[_streetChunkPositions.Count - 1].z < 100)
+        if (_streetChunkObjects.Count == 0 || _streetChunkPositions[_streetChunkPositions.Count - 1].z < 500)
         {
             NextChunk();
         }
@@ -59,6 +59,7 @@ public class StreetCreator : MonoBehaviour
         // _currDir += movement;
         _currPos += movement;
     }
+    
     private void NextChunk()
     {
         GameObject newChunk = new GameObject();
