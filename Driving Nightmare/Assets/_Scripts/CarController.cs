@@ -116,6 +116,7 @@ public class CarController : MonoBehaviour
                 Vector3 moveVec = transform.forward * _actualSpeed * Time.deltaTime;
                 moveVec.z = 0f;
                 transform.Translate(moveVec, Space.World);
+                _rb.MovePosition(moveVec);
 
             }
         }
