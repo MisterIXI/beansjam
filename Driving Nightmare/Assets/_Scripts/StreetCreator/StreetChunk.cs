@@ -92,9 +92,9 @@ public class StreetChunk
                 _vertices.Add(vertPos);
                 _uvs.Add(new Vector2((float)x, (float)y));
             }
-            currDir = Interpolate(currDir, target, y / (float)(_vertCount * 3));
+            currDir = Interpolate(startDir, target, y / (float)(_vertCount * 3));
             currPos += currDir * BaseLength *3f;
-            Debug.Log("Curr dir: " + currPos);
+            // Debug.Log("Curr dir: " + currPos);
         }
         currPos -= currDir * BaseLength *3f;
 
