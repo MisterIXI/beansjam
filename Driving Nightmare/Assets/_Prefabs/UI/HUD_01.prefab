@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5518868, b: 0.5518868, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -618,7 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f82a7d9f081ee4aba144a12c4c23a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanUses: 1
   canObjects:
   - {fileID: 1648798602346027984}
   - {fileID: 1648798601933863660}
@@ -738,6 +737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1648798602163749440}
   - component: {fileID: 1648798602163749455}
+  - component: {fileID: 1292265097}
   m_Layer: 5
   m_Name: Progress
   m_TagString: Untagged
@@ -815,10 +815,25 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.642
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1292265097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648798602163749441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e16962b9c433a4b9a397089cecaaf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canManager: {fileID: 1648798602006570891}
+  _slider: {fileID: 1648798602163749455}
+  _image: {fileID: 1648798601314429762}
 --- !u!1 &1648798602210015106
 GameObject:
   m_ObjectHideFlags: 0
