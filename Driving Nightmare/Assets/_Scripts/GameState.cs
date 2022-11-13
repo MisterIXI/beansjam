@@ -14,6 +14,7 @@ public class GameState : MonoBehaviour
     private GameStateEnum _state;
     private CarController _car;
     public GameObject MenuUI;
+    public GameObject CreditsUI;
     public GameObject HudUI;
     public GameObject GameOverUI;
     const float CARS_START_SPEED = 50f;
@@ -34,9 +35,16 @@ public class GameState : MonoBehaviour
 
     public void On_Credits_Click()
     {
-        
+        MenuUI.SetActive(false);
+        CreditsUI.SetActive(true);
     }
 
+    public void On_CreditsBack_Click()
+    {
+        MenuUI.SetActive(true);
+        CreditsUI.SetActive(false);
+    }
+    
     public void On_Quit_Click()
     {
         Application.Quit();
