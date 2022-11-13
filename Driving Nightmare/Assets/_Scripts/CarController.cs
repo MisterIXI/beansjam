@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
     public GameObject StreetSpawner;
     public Transform SteeringWheel;
     public float GroundLevel = 5f;
-    public float CarSpeed = 50f;
+    public float CarSpeed = 0f;
     public float SteerStrength = 20f;
     public float raycast_offset = 5f;
     public float maxAngle = 80f;
@@ -135,8 +135,8 @@ public class CarController : MonoBehaviour
 
     public void WakeUp()
     {
-        _steerInput = _desiredSteer;
-        _gasInput = _desiredGas;
+        // _steerInput = _desiredSteer;
+        // _gasInput = _desiredGas;
     }
     private void Update()
     {

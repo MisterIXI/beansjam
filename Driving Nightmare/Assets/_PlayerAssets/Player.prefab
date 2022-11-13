@@ -347,6 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FinishLine: 100000
   FogDensity: 0.02
+  CrashSound: {fileID: 8300000, guid: 1045a04733898c6449403842513475ce, type: 3}
   StreetSpawner: {fileID: 0}
   SteeringWheel: {fileID: 7996429909667479796}
   GroundLevel: 5
@@ -420,6 +421,7 @@ MonoBehaviour:
   Bee: {fileID: 3159598174200232787, guid: b6824978bd0c94c44a18938b34494610, type: 3}
   Beehive: {fileID: 9135403608699406945, guid: 847bb3b1d9bce4a4c8f512fa9c2a43c8, type: 3}
   Car: {fileID: 4674991814636829153, guid: 1b63c8aad4853fe48a482a1586332e58, type: 3}
+  Pylons: {fileID: 8943397616216024928, guid: ce624d08d361cca4fb3bec2be19780e5, type: 3}
   offset: 0
 --- !u!114 &1599599291
 MonoBehaviour:
@@ -1671,6 +1673,18 @@ GameObject:
   m_PrefabInstance: {fileID: 5124051661912066787}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &315403841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533662442808671779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dacf24f42182bf44affa2b27c58be15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2708491411267539411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
