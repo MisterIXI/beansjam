@@ -157,7 +157,7 @@ public class CarController : MonoBehaviour
             if(!_audioSource.isPlaying)
                 _audioSource.Play();
             _audioSource.pitch = (_actualSpeed /  (CarSpeed * DEFAULT_SPEED)) *0.5f + 0.5f ;
-            Debug.Log(_audioSource.pitch);
+            // Debug.Log(_audioSource.pitch);
         }
     }
 
