@@ -102,14 +102,11 @@ public class CarController : MonoBehaviour
                 _gasInput = DEFAULT_SPEED;
             }
         }
-
     }
 
 
     private void Update()
     {
-
-
         RaycastHit hit;
         // raycast straight down to street
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 50f))

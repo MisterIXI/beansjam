@@ -400,6 +400,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1292265097, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
+      propertyPath: CanDrink
+      value: 
+      objectReference: {fileID: 8300000, guid: ca9fa9e43ecff1e49b386dbc1393f2ce, type: 3}
     - target: {fileID: 1648798601314429763, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1010,6 +1014,10 @@ PrefabInstance:
       propertyPath: LoseObject
       value: 
       objectReference: {fileID: 1993156581}
+    - target: {fileID: 81407549729427347, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+      propertyPath: Car
+      value: 
+      objectReference: {fileID: 4674991814636829153, guid: 1b63c8aad4853fe48a482a1586332e58, type: 3}
     - target: {fileID: 1897417248656205385, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
       propertyPath: m_RootOrder
       value: 1

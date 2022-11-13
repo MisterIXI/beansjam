@@ -85,7 +85,6 @@ public class TerrainSpawner : MonoBehaviour
     {
         if (Random.Range(0f, 1f) < 0.005f)
         {
-
             Vector2 range = CalcStreetLeft(position);
             // get middle of street
             float rolledPos = Mathf.Lerp(range[0], range[1], 0.5f);
@@ -98,8 +97,28 @@ public class TerrainSpawner : MonoBehaviour
                 car.transform.Rotate(new Vector3(-90, 0, -180), Space.Self);
                 car.transform.position = car.transform.position + Vector3.up * 5f;
                 // side rotation with two raycasts
-
-
+                // roll random color
+                Color randColor = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+                // copy material of car
+                Material mat = new Material(car.GetComponent<Renderer>().material);
+                mat.color = randColor;
+                car.GetComponent<MeshRenderer>().material = mat;
+            }
+        }
+        if (Random.Range(0f, 1f) < 0.005f)
+        {
+            Vector2 range = CalcStreet(position);
+            // get middle of street
+            float rolledPos = Mathf.Lerp(range[0], range[1], 0.75f);
+            Vector3 spawnPos = new Vector3(rolledPos, position.y, position.z);
+            // two ray casts front and back for rotation
+            GameObject car = SpawnObject(Car, spawnPos);
+            if (car != null)
+            {
+                car.transform.rotation = Quaternion.LookRotation(-direction);
+                car.transform.Rotate(new Vector3(-90, 0, 0), Space.Self);
+                car.transform.position = car.transform.position + Vector3.up * 5f;
+                // side rotation with two raycasts
                 // roll random color
                 Color randColor = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
                 // copy material of car
