@@ -57,6 +57,7 @@ public class CarController : MonoBehaviour
             RenderSettings.fogColor = new Color(Random.Range(0f, 0.1f), 0f, 0f, 1f);
         }
     }
+    private float _desiredSteer = 0f;
     private void SteerCallback(InputAction.CallbackContext context)
     {
         if (!_sleepManager.IsSleeping)
@@ -68,6 +69,17 @@ public class CarController : MonoBehaviour
             if (context.canceled)
             {
                 _steerInput = 0f;
+            }
+        }
+        else
+        {
+            if (context.performed)
+            {
+                _desiredSteer = context.ReadValue<float>();
+            }
+            if (context.canceled)
+            {
+                _desiredSteer = 0f;
             }
         }
 
@@ -85,7 +97,7 @@ public class CarController : MonoBehaviour
         _steerInput = 0f;
         // _gasInput = DEFAULT_SPEED;
     }
-
+    private float _desiredGas = 0f;
     private void GasCallback(InputAction.CallbackContext context)
     {
         if (!_sleepManager.IsSleeping)
@@ -103,9 +115,28 @@ public class CarController : MonoBehaviour
                 _gasInput = DEFAULT_SPEED;
             }
         }
+        else
+        {
+            if (context.performed)
+            {
+                _desiredGas = context.ReadValue<float>();
+                if (_desiredGas < MIN_SPEED)
+                {
+                    _desiredGas = MIN_SPEED;
+                }
+            }
+            if (context.canceled)
+            {
+                _desiredGas = DEFAULT_SPEED;
+            }
+        }
     }
 
-
+    public void WakeUp()
+    {
+        _steerInput = _desiredSteer;
+        _gasInput = _desiredGas;
+    }
     private void Update()
     {
         RaycastHit hit;
@@ -180,7 +211,7 @@ public class CarController : MonoBehaviour
         _wheelAngle += change;
         // lerp rotate steering wheel
         // SteeringWheel.eulerAngles
-        SteeringWheel.RotateAround(SteeringWheel.position,SteeringWheel.up, change*3f);
+        SteeringWheel.RotateAround(SteeringWheel.position, SteeringWheel.up, change * 3f);
     }
     private void SoundChange()
     {

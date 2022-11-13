@@ -13,7 +13,7 @@ public class SleepManager : MonoBehaviour
     public float Sleep { get; private set; }
     public float CanReduceValue = 1f;
     public float CanDrinkDuration = 1f;
-    private float _sleepTick = 0.05f;
+    private float _sleepTick = 0.1f;
     private int whity;
     public bool IsSleeping;
     private bool hit = false; // GLOBAL COLLISION BOOL IF player hits Obstacle
@@ -79,13 +79,18 @@ public class SleepManager : MonoBehaviour
     {
         if (context.performed)
         {
-            if (_canManager.UseCan())
+            if (_canManager.gameObject.activeSelf && _canManager.UseCan())
             {
                 StartCoroutine("ReduceSleep", CanReduceValue);
+                if (IsSleeping)
+                {
+                    IsSleeping = false;
+                    _car.WakeUp();
+                }
+                AudioSource audioSource = Camera.main.GetComponent<AudioSource>();
+                audioSource.PlayOneShot(CanOpen, 0.7f);
+                audioSource.PlayOneShot(CanDrink, 1f);
             }
-            AudioSource audioSource = Camera.main.GetComponent<AudioSource>();
-            audioSource.PlayOneShot(CanOpen, 0.7f);
-            audioSource.PlayOneShot(CanDrink, 1f);
         }
     }
 
@@ -100,6 +105,7 @@ public class SleepManager : MonoBehaviour
         else if (Sleep <= 0.7f && IsSleeping == true)
         {
             IsSleeping = false;
+            _car.WakeUp();
         }
 
         else if (hit)
@@ -113,7 +119,7 @@ public class SleepManager : MonoBehaviour
         }
         if (IsSleeping)
         {
-            if (Time.time - _startedSleeping > 0.5f)
+            if (Time.time - _startedSleeping > 1f)
             {
                 Sleep -= _sleepTick * 15 * Time.deltaTime;
             }
