@@ -97,7 +97,7 @@ public class CarController : MonoBehaviour
         _steerInput = 0f;
         // _gasInput = DEFAULT_SPEED;
     }
-    private float _desiredGas = 0f;
+    private float _desiredGas = DEFAULT_SPEED;
     private void GasCallback(InputAction.CallbackContext context)
     {
         if (!_sleepManager.IsSleeping)

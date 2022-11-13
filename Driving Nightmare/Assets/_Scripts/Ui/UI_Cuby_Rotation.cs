@@ -10,6 +10,6 @@ public class UI_Cuby_Rotation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-            transform.RotateAround(transform.position, transform.forward, Time.deltaTime * 90f);
+            transform.RotateAround(transform.position,Vector3.up, Time.deltaTime * 90f);
     }
 }
