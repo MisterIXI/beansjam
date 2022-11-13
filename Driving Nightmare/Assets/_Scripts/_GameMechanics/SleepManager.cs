@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 public class SleepManager : MonoBehaviour
 {
-    [SerializeField] private CanManager canManager;
+    private CanManager _canManager;
 
     public Image sleepPanel;
 
@@ -32,6 +33,8 @@ public class SleepManager : MonoBehaviour
         whity = 0;
         Sleep = 0.01f;
         _car = ReferenceHolder.Player.GetComponent<CarController>();
+        _canManager = ReferenceHolder.CanManager;
+        ReferenceHolder.EventHandler.SubscribeToEvent("EnergyDrink", UseCan);
     }
     private void AdjustFog()
     {
@@ -40,10 +43,10 @@ public class SleepManager : MonoBehaviour
         float change = Sleep * 0.01f;
         // change = Mathf.Sqrt(change);
 
-        RenderSettings.fogDensity = Mathf.Lerp(RenderSettings.fogDensity,  baseline + change, 0.4f);
-        if(Sleep > 0.9f)
+        RenderSettings.fogDensity = Mathf.Lerp(RenderSettings.fogDensity, baseline + change, 0.4f);
+        if (Sleep > 0.9f)
         {
-            float colorFactor = (Sleep - 0.9f) /0.1f;
+            float colorFactor = (Sleep - 0.9f) / 0.1f;
             sleepPanel.color = new Color(0f, 0f, 0f, colorFactor);
         }
     }
@@ -51,7 +54,7 @@ public class SleepManager : MonoBehaviour
     {
         HandleSleep();
         AdjustFog();
-        Debug.Log("Sleep: " + Sleep + " IsSleeping: " + IsSleeping);
+        // Debug.Log("Sleep: " + Sleep + " IsSleeping: " + IsSleeping);
     }
     IEnumerator PulseImageEffect()
     {
@@ -71,9 +74,15 @@ public class SleepManager : MonoBehaviour
 
 
     }
-    public void UseCan()
+    public void UseCan(InputAction.CallbackContext context)
     {
-        StartCoroutine("ReduceSleep", CanReduceValue);
+        if (context.performed)
+        {
+            if (_canManager.UseCan())
+            {
+                StartCoroutine("ReduceSleep", CanReduceValue);
+            }
+        }
     }
 
     private void HandleSleep()
@@ -100,7 +109,7 @@ public class SleepManager : MonoBehaviour
         }
         if (IsSleeping)
         {
-            if(Time.time - _startedSleeping > 0.5f)
+            if (Time.time - _startedSleeping > 0.5f)
             {
                 Sleep -= _sleepTick * 15 * Time.deltaTime;
             }

@@ -8,6 +8,9 @@ public class CanManager : MonoBehaviour
     private int Maxuses=3;
     private int tempuse=0;
     public GameObject[] canObjects;
+    private void Awake() {
+        ReferenceHolder.CanManager = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +22,28 @@ public class CanManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    // void FixedUpdate()
+    // {
+    //     if (tempuse != CanUses)
+    //     {
+    //         for (int i = 0; i < Maxuses; i++)
+    //         {
+    //             if(i <CanUses)
+    //                 canObjects[i].SetActive(true);
+    //             else
+    //                 canObjects[i].SetActive(false);
+    //         }
+    //         tempuse = CanUses;
+    //     }
+    // }
+
+    public bool UseCan()
     {
-        if (tempuse != CanUses)
+        if (CanUses > 0)
         {
-            for (int i = 0; i < Maxuses; i++)
-            {
-                if(i <CanUses)
-                    canObjects[i].SetActive(true);
-                else
-                    canObjects[i].SetActive(false);
-            }
-            tempuse = CanUses;
+            canObjects[--CanUses].SetActive(false);
+            return true;
         }
+        return false;
     }
 }

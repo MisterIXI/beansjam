@@ -17,6 +17,7 @@ public class TerrainSpawner : MonoBehaviour
     public GameObject Fence;
     public GameObject Bee;
     public GameObject Beehive;
+    public GameObject Car;
     public float offset;
     private List<GameObject> _objects;
 
@@ -45,16 +46,17 @@ public class TerrainSpawner : MonoBehaviour
             SpawnFoliage(Bush, currPos, decorationChance, 0.25f);
             SpawnFoliage(Rock, currPos, decorationChance, 0.25f);
             SpawnFoliage(Grass, currPos, decorationChance, 0.25f);
+            SpawnCar(currPos, currDir);
             SpawnFence(currPos);
             SpawnBeeHive(currPos);
             currDir = StreetChunk.Interpolate(startVector, targetVector, y / (float)(StreetCreator.VERTCOUNT * 3));
             currPos += currDir * StreetCreator.EDGELENGTH * 3f;
-            if(y % 40 == 0)
+            if (y % 40 == 0)
                 yield return null;
         }
     }
 
-    private void SpawnFoliage(GameObject tree, Vector3 position, float chance, float edgeBias)
+    private void SpawnFoliage(GameObject obj, Vector3 position, float chance, float edgeBias)
     {
         // roll if tree should be spawned
         if (Random.Range(0f, 1f) < chance)
@@ -65,15 +67,48 @@ public class TerrainSpawner : MonoBehaviour
             else
                 range = CalcGrasRight(position);
 
-            float t = Mathf.Abs(Random.value + Random.value * edgeBias);
-            float rolledPos = Mathf.Lerp(range[0], range[1] * 0.95f, t);
-            Vector3 spawnPos = new Vector3(rolledPos, position.y, position.z);
-            SpawnObject(tree, spawnPos);
+            BiasedSpawn(obj, position, chance, edgeBias, range);
             // Debug.Log("Spawned " + tree.name + " at " + spawnPos + " with range " + range + " and rolled " + rolledPos);
         }
     }
 
+    private void BiasedSpawn(GameObject obj, Vector3 position, float chance, float edgeBias, Vector2 range)
+    {
+        float t = Mathf.Abs(Random.value + Random.value * edgeBias);
+        float rolledPos = Mathf.Lerp(range[0], range[1] * 0.95f, t);
+        Vector3 spawnPos = new Vector3(rolledPos, position.y, position.z);
+        // roll random color
+        SpawnObject(obj, spawnPos);
+    }
 
+    private void SpawnCar(Vector3 position, Vector3 direction)
+    {
+        if (Random.Range(0f, 1f) < 0.005f)
+        {
+
+            Vector2 range = CalcStreetLeft(position);
+            // get middle of street
+            float rolledPos = Mathf.Lerp(range[0], range[1], 0.5f);
+            Vector3 spawnPos = new Vector3(rolledPos, position.y, position.z);
+            // two ray casts front and back for rotation
+            GameObject car = SpawnObject(Car, spawnPos);
+            if (car != null)
+            {
+                car.transform.rotation = Quaternion.LookRotation(-direction);
+                car.transform.Rotate(new Vector3(-90, 0, -180), Space.Self);
+                car.transform.position = car.transform.position + Vector3.up * 5f;
+            }
+            // side rotation with two raycasts
+
+
+            // roll random color
+            Color randColor = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+            // copy material of car
+            Material mat = new Material(car.GetComponent<Renderer>().material);
+            mat.color = randColor;
+            car.GetComponent<MeshRenderer>().material = mat;
+        }
+    }
 
     private void SpawnFence(Vector3 position)
     {
@@ -122,18 +157,30 @@ public class TerrainSpawner : MonoBehaviour
         return new Vector2(left, right);
     }
 
-    private void SpawnObject(GameObject obj, Vector3 position)
+    private Vector2 CalcStreetLeft(Vector3 position)
+    {
+        float left = position.x;
+        // substract half of the street width
+        left -= StreetCreator.VERTCOUNT * StreetCreator.EDGELENGTH / 2;
+        float right = position.x;
+        return new Vector2(left, right);
+    }
+
+    private GameObject SpawnObject(GameObject obj, Vector3 position)
     {
         float heightOffset = 100f;
         Vector3 offsetPosition = position + Vector3.up * heightOffset;
         // raycast to ground
         RaycastHit hit;
+        GameObject result = null;
         if (Physics.Raycast(offsetPosition, Vector3.down, out hit, heightOffset * 2))
         {
 
             Quaternion rotation = Quaternion.Euler(obj.transform.rotation.eulerAngles.x, Random.Range(0, 360), obj.transform.rotation.eulerAngles.z);
-            _objects.Add(Instantiate(obj, hit.point, rotation));
+            result = Instantiate(obj, hit.point, rotation);
+            _objects.Add(result);
         }
+        return result;
         // random rotation around y axis
 
     }

@@ -7,6 +7,7 @@ public class ReferenceHolder : MonoBehaviour
     public static GameObject Player;
     public static EventHandler EventHandler;
     public static GameState GameState;
+    public static CanManager CanManager;
     public static SleepManager SleepManager;
     // Start is called before the first frame update
     private void Awake() {
