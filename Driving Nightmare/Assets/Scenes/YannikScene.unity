@@ -390,6 +390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1292265097, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
+      propertyPath: CanOpen
+      value: 
+      objectReference: {fileID: 8300000, guid: 3bf9bd6081ae5e54689331895ce3063b, type: 3}
     - target: {fileID: 1648798601314429763, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -481,6 +485,10 @@ PrefabInstance:
     - target: {fileID: 1648798602152257668, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
       propertyPath: m_Name
       value: HUD_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648798602163749440, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 423
       objectReference: {fileID: 0}
     - target: {fileID: 1648798602488892581, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -585,6 +593,107 @@ MonoBehaviour:
   Beehive: {fileID: 9135403608699406945, guid: 847bb3b1d9bce4a4c8f512fa9c2a43c8, type: 3}
   Car: {fileID: 4674991814636829153, guid: 1b63c8aad4853fe48a482a1586332e58, type: 3}
   offset: 0
+--- !u!1 &1777752987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2842739275886649321, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+  m_PrefabInstance: {fileID: 7598627963091537160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1777752993
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777752987}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1810524832
 PrefabInstance:
   m_ObjectHideFlags: 0

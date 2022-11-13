@@ -8,7 +8,8 @@ public class SleepManager : MonoBehaviour
     private CanManager _canManager;
 
     public Image sleepPanel;
-
+    public AudioClip CanOpen;
+    public AudioClip CanDrink;
     public float Sleep { get; private set; }
     public float CanReduceValue = 1f;
     public float CanDrinkDuration = 1f;
@@ -82,6 +83,9 @@ public class SleepManager : MonoBehaviour
             {
                 StartCoroutine("ReduceSleep", CanReduceValue);
             }
+            AudioSource audioSource = Camera.main.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(CanOpen, 0.7f);
+            // audioSource.PlayOneShot(CanDrink, 0.7f);
         }
     }
 

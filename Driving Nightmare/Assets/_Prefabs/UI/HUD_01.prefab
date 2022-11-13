@@ -734,7 +734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 728, y: 421}
+  m_AnchoredPosition: {x: 728, y: 423}
   m_SizeDelta: {x: 180, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648798602163749455
@@ -800,8 +800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e16962b9c433a4b9a397089cecaaf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canManager: {fileID: 0}
   sleepPanel: {fileID: 641698242}
+  CanOpen: {fileID: 8300000, guid: 3bf9bd6081ae5e54689331895ce3063b, type: 3}
+  CanDrink: {fileID: 0}
   CanReduceValue: 1
   CanDrinkDuration: 1
   IsSleeping: 0
@@ -1196,7 +1197,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4381779644923070532, guid: 488f2cb5fd00dd24384088244ce97b0e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 488f2cb5fd00dd24384088244ce97b0e, type: 3}
 --- !u!4 &4381779645378558914 stripped
 Transform:
