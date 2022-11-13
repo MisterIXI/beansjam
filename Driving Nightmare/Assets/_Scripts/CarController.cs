@@ -70,7 +70,14 @@ public class CarController : MonoBehaviour
         }
 
     }
-
+    public void StopCar()
+    {
+        CarSpeed = 0f;
+        _actualSpeed = 0f;
+        _sc.ScrollSpeed = 0f;
+        _audioSource.Stop();
+        Time.timeScale = 0f;
+    }
     public void OnSleep()
     {
         _steerInput = 0f;

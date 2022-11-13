@@ -16,6 +16,8 @@ public class GameState : MonoBehaviour
     public GameObject MenuUI;
     public GameObject CreditsUI;
     public GameObject HudUI;
+    public GameObject WinObject;
+    public GameObject LoseObject;
     public GameObject GameOverUI;
     [HideInInspector]
     public SleepManager SleepManager;
@@ -52,6 +54,8 @@ public class GameState : MonoBehaviour
         _state = GameStateEnum.GameOver;
         HudUI.SetActive(false);
         GameOverUI.SetActive(true);
+        WinObject.SetActive(true);
+        _car.StopCar();
     }
 
     public void Lose()
@@ -60,23 +64,24 @@ public class GameState : MonoBehaviour
         _car.CarSpeed = 0f;
         HudUI.SetActive(false);
         GameOverUI.SetActive(true);
+        LoseObject.SetActive(true);
+        _car.StopCar();
     }
 
     public void On_Restart_Click()
     {
         // reload scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
     public void On_Credits_Click()
     {
-        MenuUI.SetActive(false);
         CreditsUI.SetActive(true);
     }
 
     public void On_CreditsBack_Click()
     {
-        MenuUI.SetActive(true);
         CreditsUI.SetActive(false);
     }
 
