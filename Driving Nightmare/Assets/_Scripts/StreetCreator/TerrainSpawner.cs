@@ -65,11 +65,6 @@ public class TerrainSpawner : MonoBehaviour
             else
                 range = CalcGrasRight(position);
 
-            if (range[0] < range[1])
-            {
-                // range = new Vector2(range[1], range[0]);
-                // edgeBias = 1 - edgeBias;
-            }
             float t = Mathf.Abs(Random.value + Random.value * edgeBias);
             float rolledPos = Mathf.Lerp(range[0], range[1] * 0.95f, t);
             Vector3 spawnPos = new Vector3(rolledPos, position.y, position.z);
