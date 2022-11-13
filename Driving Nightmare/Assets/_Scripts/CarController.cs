@@ -20,6 +20,7 @@ public class CarController : MonoBehaviour
     private Rigidbody _rb;
     private EventHandler _eH;
     private float _steerInput;
+    private float _actualSteer;
     private float _gasInput;
     private float _actualSpeed;
     private float _finishProgress;
@@ -127,6 +128,7 @@ public class CarController : MonoBehaviour
     {
         // lerp speed to desired input
         _actualSpeed = Mathf.Lerp(_actualSpeed, _gasInput * CarSpeed, Time.deltaTime);
+        _actualSteer = Mathf.Lerp(_actualSteer, _steerInput * SteerStrength, Time.deltaTime);
         _sc.ScrollSpeed = _actualSpeed;
 
         _finishProgress += _actualSpeed;
@@ -150,7 +152,7 @@ public class CarController : MonoBehaviour
                 // direction += Vector3.right * _steerInput * SteerStrength;
                 Quaternion rotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 0.5f);
-                float angle = _steerInput * SteerStrength * Time.deltaTime;
+                float angle = _actualSteer * Time.deltaTime;
                 float eulerAngle = transform.rotation.eulerAngles.y + maxAngle;
                 float combination = Mathf.Abs(angle + eulerAngle);
                 combination %= 360f;
