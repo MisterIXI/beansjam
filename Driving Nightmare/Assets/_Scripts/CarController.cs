@@ -11,6 +11,7 @@ public class CarController : MonoBehaviour
     const float DEFAULT_SPEED = 0.75f;
     const float MIN_SPEED = 0.4f;
     public GameObject StreetSpawner;
+    public Transform SteeringWheel;
     public float GroundLevel = 5f;
     public float CarSpeed = 50f;
     public float SteerStrength = 20f;
@@ -129,7 +130,7 @@ public class CarController : MonoBehaviour
         _sc.ScrollSpeed = _actualSpeed;
 
         _finishProgress += _actualSpeed;
-        Debug.Log("Progress: " + _finishProgress + " FinishLine: " + FinishLine* 10 + " ProgressPerSecond: " + _finishProgress/Time.time);
+        // Debug.Log("Progress: " + _finishProgress + " FinishLine: " + FinishLine* 10 + " ProgressPerSecond: " + _finishProgress/Time.time);
         _progressRotator.progressPercent = _finishProgress / FinishLine / 10;
         if (_finishProgress >= FinishLine * 10)
         {
@@ -168,7 +169,18 @@ public class CarController : MonoBehaviour
 
             }
         }
+        LerpSteeringWheel();
         SoundChange();
+    }
+
+    private float _wheelAngle = 0f;
+    private void LerpSteeringWheel()
+    {
+        float change = _actualSteer - Mathf.Lerp(_wheelAngle, _actualSteer, Time.deltaTime);
+        _wheelAngle += change;
+        // lerp rotate steering wheel
+        // SteeringWheel.eulerAngles
+        SteeringWheel.RotateAround(SteeringWheel.position,SteeringWheel.up, change*3f);
     }
     private void SoundChange()
     {
