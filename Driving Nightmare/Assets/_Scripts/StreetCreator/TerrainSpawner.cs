@@ -18,6 +18,7 @@ public class TerrainSpawner : MonoBehaviour
     public GameObject Bee;
     public GameObject Beehive;
     public GameObject Car;
+    public GameObject Pylons;
     public float offset;
     private List<GameObject> _objects;
 
@@ -37,6 +38,7 @@ public class TerrainSpawner : MonoBehaviour
         Vector3 targetVector = new Vector3(targetDir.x, targetDir.y, 1);
         Vector3 currPos = startPos;
         Vector3 currDir = startVector;
+        int lastPylonSpawn = 0;
         for (int y = 0; y < StreetCreator.VERTCOUNT * 3; y++)
         {
             // call method for all objects each
@@ -49,6 +51,12 @@ public class TerrainSpawner : MonoBehaviour
             SpawnCar(currPos, currDir);
             SpawnFence(currPos);
             SpawnBeeHive(currPos);
+            lastPylonSpawn++;
+            if (lastPylonSpawn > StreetCreator.VERTCOUNT / 3)
+            {
+                lastPylonSpawn = 0;
+                SpawnPylon(currPos);
+            }
             currDir = StreetChunk.Interpolate(startVector, targetVector, y / (float)(StreetCreator.VERTCOUNT * 3));
             currPos += currDir * StreetCreator.EDGELENGTH * 3f;
             if (y % 40 == 0)
@@ -129,6 +137,21 @@ public class TerrainSpawner : MonoBehaviour
         }
     }
 
+    private void SpawnPylon(Vector3 position)
+    {
+        Vector2 range = CalcStreet(position);
+        Vector3 raycastPosLeft = new Vector3(range[0] - 10f, position.y, position.z);
+        Vector3 raycastPosRight = new Vector3(range[1] + 10f, position.y, position.z);
+        RaycastHit hitLeft;
+        RaycastHit hitRight;
+        if (Physics.Raycast(raycastPosLeft, Vector3.down, out hitLeft, 100f) && Physics.Raycast(raycastPosRight, Vector3.down, out hitRight, 100f))
+        {
+
+            SpawnObject(Pylons, hitLeft.point);
+            var go = SpawnObject(Pylons, hitRight.point);
+            go.transform.RotateAround(go.transform.position, Vector3.up, 180f);
+        }
+    }
     private void SpawnFence(Vector3 position)
     {
 
@@ -136,7 +159,19 @@ public class TerrainSpawner : MonoBehaviour
 
     private void SpawnBeeHive(Vector3 position)
     {
-
+        if (Random.Range(0f, 1f) < 0.01f)
+        {
+            Vector2 range = CalcStreet(position);
+            // get random position on street
+            float rolledPos = Mathf.Lerp(range[0], range[1], Random.Range(-0.3f, 1.3f));
+            // raycast to playce bee hive on ground
+            RaycastHit hit;
+            if (Physics.Raycast(new Vector3(rolledPos, position.y, position.z), Vector3.down, out hit, 100f))
+            {
+                Vector3 spawnPos = new Vector3(rolledPos, hit.point.y, position.z);
+                SpawnObject(Beehive, spawnPos);
+            }
+        }
     }
 
     private Vector2 CalcGrasLeft(Vector3 position)

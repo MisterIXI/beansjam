@@ -604,34 +604,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4527275455199873711, guid: b20eda40526b56742961feda52475e33, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5206507670306176627, guid: b20eda40526b56742961feda52475e33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1599599291}
-    - target: {fileID: 5206507670306176627, guid: b20eda40526b56742961feda52475e33, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: On_Quit_Click
-      objectReference: {fileID: 0}
     - target: {fileID: 5206507670424522963, guid: b20eda40526b56742961feda52475e33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1599599291}
-    - target: {fileID: 5206507670424522963, guid: b20eda40526b56742961feda52475e33, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: On_Credits_Click
-      objectReference: {fileID: 0}
     - target: {fileID: 5206507670483409200, guid: b20eda40526b56742961feda52475e33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1599599291}
-    - target: {fileID: 5206507670483409200, guid: b20eda40526b56742961feda52475e33, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: On_Restart_Click
-      objectReference: {fileID: 0}
     - target: {fileID: 5206507670525261185, guid: b20eda40526b56742961feda52475e33, type: 3}
       propertyPath: m_Name
       value: Gameover
@@ -728,8 +712,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 736145295216122116, guid: b20eda40526b56742961feda52475e33, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20eda40526b56742961feda52475e33, type: 3}
 --- !u!114 &1599599291 stripped
 MonoBehaviour:
