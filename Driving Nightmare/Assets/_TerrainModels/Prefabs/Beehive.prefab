@@ -343,9 +343,10 @@ GameObject:
   - component: {fileID: 8470331378660659419}
   - component: {fileID: 4765778276430307198}
   - component: {fileID: 7333977158965406644}
+  - component: {fileID: 2963153641493496812}
   m_Layer: 2
   m_Name: Beehive
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,3 +420,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2963153641493496812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9135403608699406945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9038751, y: 2.0000005, z: 1.9773961}
+  m_Center: {x: 0, y: 0, z: 1.5304044}

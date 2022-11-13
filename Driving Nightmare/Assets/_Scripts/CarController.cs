@@ -121,6 +121,15 @@ public class CarController : MonoBehaviour
             }
         }
     }
+
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.tag == "Obstacle")
+        {
+            Debug.Log("Trigger with obstacle");
+            Destroy(gameObject);
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -123,6 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &441636508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7598627963414691835, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+  m_PrefabInstance: {fileID: 7598627963091537160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &441636512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441636508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.7, y: 17.7, z: 6.9730935}
+  m_Center: {x: 0, y: 2.9867897, z: -0.54463756}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,8 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf38e23be225f04bbc4fd1046f3af26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  averageTreeCount: 100
-  averageDecorationCount: 100
+  treeChance: 0.5
+  decorationChance: 0.8
   FenceChance: 0.005
   BeeHiveChance: 0.005
   Oak: {fileID: 7619028583109293141, guid: e93bc3376c484ed49828184af1b07990, type: 3}
@@ -322,6 +340,7 @@ MonoBehaviour:
   Fence: {fileID: 3636328640460455805, guid: 41bbc540c4c522445827e6553bcd6fec, type: 3}
   Bee: {fileID: 3159598174200232787, guid: b6824978bd0c94c44a18938b34494610, type: 3}
   Beehive: {fileID: 9135403608699406945, guid: 847bb3b1d9bce4a4c8f512fa9c2a43c8, type: 3}
+  offset: 0
 --- !u!1001 &7598627963091537160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -329,6 +348,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 81407549729427347, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+      propertyPath: averageTreeCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1897417248656205385, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -381,5 +404,9 @@ PrefabInstance:
       propertyPath: StreetSpawner
       value: 
       objectReference: {fileID: 1774314781}
+    - target: {fileID: 8892769306032611637, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+      propertyPath: far clip plane
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
