@@ -105,7 +105,7 @@ public class CarController : MonoBehaviour
                 float eulerAngle = transform.rotation.eulerAngles.y + maxAngle;
                 float combination = Mathf.Abs(angle + eulerAngle);
                 combination %= 360f;
-                Debug.Log("Angle: " + angle + " EulerAngles: " + eulerAngle + " Combination: " + combination);
+                // Debug.Log("Angle: " + angle + " EulerAngles: " + eulerAngle + " Combination: " + combination);
                 if(combination > maxAngle*2)
                 {
                     angle = 0f;
