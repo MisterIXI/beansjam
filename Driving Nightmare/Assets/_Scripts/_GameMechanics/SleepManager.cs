@@ -85,7 +85,7 @@ public class SleepManager : MonoBehaviour
             }
             AudioSource audioSource = Camera.main.GetComponent<AudioSource>();
             audioSource.PlayOneShot(CanOpen, 0.7f);
-            // audioSource.PlayOneShot(CanDrink, 0.7f);
+            audioSource.PlayOneShot(CanDrink, 1f);
         }
     }
 

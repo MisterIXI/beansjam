@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
-    public long FinishLine = 100;
+    public long FinishLine = 10;
 
     public float FogDensity = 0.02f;
     const float DEFAULT_SPEED = 0.75f;
@@ -120,7 +120,9 @@ public class CarController : MonoBehaviour
             transform.position = lerpedPos;
         }
     }
-
+    float progressPerSecond = 0f;
+    float lastTime;
+    int totalCounts = 0;
     private void FixedUpdate()
     {
         // lerp speed to desired input
@@ -128,8 +130,9 @@ public class CarController : MonoBehaviour
         _sc.ScrollSpeed = _actualSpeed;
 
         _finishProgress += _actualSpeed;
-        _progressRotator.progressPercent = _finishProgress / FinishLine / 10000;
-        if (_finishProgress >= FinishLine * 10000)
+        Debug.Log("Progress: " + _finishProgress + " FinishLine: " + FinishLine* 10 + " ProgressPerSecond: " + _finishProgress/Time.time);
+        _progressRotator.progressPercent = _finishProgress / FinishLine / 10;
+        if (_finishProgress >= FinishLine * 10)
         {
             GetComponent<GameState>().Win();
         }

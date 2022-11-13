@@ -97,16 +97,16 @@ public class TerrainSpawner : MonoBehaviour
                 car.transform.rotation = Quaternion.LookRotation(-direction);
                 car.transform.Rotate(new Vector3(-90, 0, -180), Space.Self);
                 car.transform.position = car.transform.position + Vector3.up * 5f;
+                // side rotation with two raycasts
+
+
+                // roll random color
+                Color randColor = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+                // copy material of car
+                Material mat = new Material(car.GetComponent<Renderer>().material);
+                mat.color = randColor;
+                car.GetComponent<MeshRenderer>().material = mat;
             }
-            // side rotation with two raycasts
-
-
-            // roll random color
-            Color randColor = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
-            // copy material of car
-            Material mat = new Material(car.GetComponent<Renderer>().material);
-            mat.color = randColor;
-            car.GetComponent<MeshRenderer>().material = mat;
         }
     }
 
