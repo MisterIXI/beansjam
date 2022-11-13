@@ -26,7 +26,7 @@ public class GameState : MonoBehaviour
     [HideInInspector]
     public UI_Sprite_Animation CarAnimation;
 
-    const float CARS_START_SPEED = 50f;
+    const float CARS_START_SPEED = 150f;
     private void Awake() {
         SleepManager = HudUI.GetComponentInChildren<SleepManager>();
         CanManager = HudUI.GetComponentInChildren<CanManager>();

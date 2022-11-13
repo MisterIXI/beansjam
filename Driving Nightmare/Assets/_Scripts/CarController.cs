@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
-    public long FinishLine = 100000;
+    public long FinishLine = 100;
 
     public float FogDensity = 0.02f;
-    const float DEFAULT_SPEED = 0.5f;
-    const float MIN_SPEED = 0.2f;
+    const float DEFAULT_SPEED = 0.75f;
+    const float MIN_SPEED = 0.4f;
     public GameObject StreetSpawner;
     public float GroundLevel = 5f;
     public float CarSpeed = 50f;
@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
     private float _actualSpeed;
     private float _finishProgress;
     private UI_SpriteRotating _progressRotator;
+    private SleepManager _sleepManager;
     private AudioSource _audioSource;
     void Start()
     {
@@ -36,6 +37,7 @@ public class CarController : MonoBehaviour
         _finishProgress = 0f;
         _progressRotator = ReferenceHolder.GameState.CarProgressRotator;
         _audioSource = GetComponent<AudioSource>();
+        _sleepManager = ReferenceHolder.SleepManager;
     }
 
     private void SubscribeToEvents()
@@ -55,30 +57,44 @@ public class CarController : MonoBehaviour
     }
     private void SteerCallback(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!_sleepManager.IsSleeping)
         {
-            _steerInput = context.ReadValue<float>();
+            if (context.performed)
+            {
+                _steerInput = context.ReadValue<float>();
+            }
+            if (context.canceled)
+            {
+                _steerInput = 0f;
+            }
         }
-        if (context.canceled)
-        {
-            _steerInput = 0f;
-        }
+
+    }
+
+    public void OnSleep()
+    {
+        _steerInput = 0f;
+        // _gasInput = DEFAULT_SPEED;
     }
 
     private void GasCallback(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!_sleepManager.IsSleeping)
         {
-            _gasInput = context.ReadValue<float>();
-            if (_gasInput < MIN_SPEED)
+            if (context.performed)
             {
-                _gasInput = MIN_SPEED;
+                _gasInput = context.ReadValue<float>();
+                if (_gasInput < MIN_SPEED)
+                {
+                    _gasInput = MIN_SPEED;
+                }
+            }
+            if (context.canceled)
+            {
+                _gasInput = DEFAULT_SPEED;
             }
         }
-        if (context.canceled)
-        {
-            _gasInput = DEFAULT_SPEED;
-        }
+
     }
 
 
@@ -105,8 +121,8 @@ public class CarController : MonoBehaviour
         _sc.ScrollSpeed = _actualSpeed;
 
         _finishProgress += _actualSpeed;
-        _progressRotator.progressPercent = _finishProgress / FinishLine;
-        if (_finishProgress >= FinishLine)
+        _progressRotator.progressPercent = _finishProgress / FinishLine / 10000;
+        if (_finishProgress >= FinishLine * 10000)
         {
             GetComponent<GameState>().Win();
         }
@@ -147,16 +163,16 @@ public class CarController : MonoBehaviour
     }
     private void SoundChange()
     {
-        if(CarSpeed == 0)
+        if (CarSpeed == 0)
         {
-            if(_audioSource.isPlaying)
+            if (_audioSource.isPlaying)
                 _audioSource.Pause();
         }
         else
         {
-            if(!_audioSource.isPlaying)
+            if (!_audioSource.isPlaying)
                 _audioSource.Play();
-            _audioSource.pitch = (_actualSpeed /  (CarSpeed * DEFAULT_SPEED)) *0.5f ;
+            _audioSource.pitch = (_actualSpeed / (CarSpeed * DEFAULT_SPEED)) * 0.5f;
             // Debug.Log(_audioSource.pitch);
         }
     }

@@ -630,7 +630,6 @@ GameObject:
   - component: {fileID: 1648798602163749440}
   - component: {fileID: 1648798602163749455}
   - component: {fileID: 1292265097}
-  - component: {fileID: 3303763404690634508}
   m_Layer: 5
   m_Name: Progress
   m_TagString: Untagged
@@ -725,23 +724,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canManager: {fileID: 0}
+  CanReduceValue: 1
+  CanDrinkDuration: 1
+  IsSleeping: 0
   _slider: {fileID: 1648798602163749455}
   _image: {fileID: 1648798601314429762}
---- !u!114 &3303763404690634508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648798602163749441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e16962b9c433a4b9a397089cecaaf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canManager: {fileID: 0}
-  _slider: {fileID: 1648798602163749455}
-  _image: {fileID: 1648798601605760806}
 --- !u!1 &1648798602210015106
 GameObject:
   m_ObjectHideFlags: 0

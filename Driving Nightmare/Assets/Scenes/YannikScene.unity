@@ -349,6 +349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1648798601314429763, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1648798602152257664, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -436,6 +440,10 @@ PrefabInstance:
     - target: {fileID: 1648798602152257668, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
       propertyPath: m_Name
       value: HUD_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648798602488892581, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab91c6c0fe8e89f4f8b2a3c7c6b96f3a, type: 3}
@@ -649,6 +657,10 @@ PrefabInstance:
     - target: {fileID: 5346704733732296722, guid: c697cb9db4317a741802fac8c71f03ee, type: 3}
       propertyPath: m_Name
       value: Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346704733732296722, guid: c697cb9db4317a741802fac8c71f03ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5346704733732296726, guid: c697cb9db4317a741802fac8c71f03ee, type: 3}
       propertyPath: m_Pivot.x

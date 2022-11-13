@@ -4,98 +4,130 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SleepManager : MonoBehaviour
 {
-    [SerializeField]private CanManager canManager;
+    [SerializeField] private CanManager canManager;
 
+    public Image sleepPanel;
 
-    
-    public float Sleep {get; private set;}
-    private float _sleepTick= 0.005f;
-    public bool usesCan {get;set;}
+    public float Sleep { get; private set; }
+    public float CanReduceValue = 1f;
+    public float CanDrinkDuration = 1f;
+    private float _sleepTick = 0.05f;
     private int whity;
-    private bool isSleeping;
+    public bool IsSleeping;
     private bool hit = false; // GLOBAL COLLISION BOOL IF player hits Obstacle
+    private float _startedSleeping = 0f;
+    private CarController _car;
     ///////////// UI //////////////
     public Slider _slider;
     public Image _image;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        ReferenceHolder.SleepManager = this;
+        transform.parent.gameObject.SetActive(false);
+    }
+
     void Start()
     {
         whity = 0;
         Sleep = 0.01f;
-        usesCan = false;
+        _car = ReferenceHolder.Player.GetComponent<CarController>();
     }
-    private void FixedUpdate() {
+    private void AdjustFog()
+    {
+        float baseline = 0.02f;
+
+        float change = Sleep * 0.01f;
+        // change = Mathf.Sqrt(change);
+
+        RenderSettings.fogDensity = Mathf.Lerp(RenderSettings.fogDensity,  baseline + change, 0.4f);
+        if(Sleep > 0.9f)
+        {
+            float colorFactor = (Sleep - 0.9f) /0.1f;
+            sleepPanel.color = new Color(0f, 0f, 0f, colorFactor);
+        }
+    }
+    private void FixedUpdate()
+    {
         HandleSleep();
-        
+        AdjustFog();
+        Debug.Log("Sleep: " + Sleep + " IsSleeping: " + IsSleeping);
     }
     IEnumerator PulseImageEffect()
     {
-            if(Sleep>  0.75f && whity <= 0)
-            {   
-                _image.color = new Color(1, 1,1);
-                whity=10;
-            }
-            else{
-                _image.color = new Color(Sleep, 0,0);
-                whity--;
+        if (Sleep > 0.75f && whity <= 0)
+        {
+            _image.color = new Color(1, 1, 1);
+            whity = 10;
+        }
+        else
+        {
+            _image.color = new Color(Sleep, 0, 0);
+            whity--;
 
-            }
-            yield return new WaitForSeconds(0.01f);
-        
-        
-        
+        }
+        yield return new WaitForSeconds(0.01f);
+
+
+
     }
+    public void UseCan()
+    {
+        StartCoroutine("ReduceSleep", CanReduceValue);
+    }
+
     private void HandleSleep()
     {
-        if(Sleep >1 && isSleeping == false)
+        if (Sleep > 1 && IsSleeping == false)
         {   //Debug.Log(" I SLEEP");
-            isSleeping =true;
+            IsSleeping = true;
+            _startedSleeping = Time.time;
             SleepEffect();
         }
-        else if (Sleep <=0 && isSleeping == true)
+        else if (Sleep <= 0.7f && IsSleeping == true)
         {
-            isSleeping=false;
+            IsSleeping = false;
         }
-        if(usesCan)
-        {
-           // Debug.Log("Using EnergyDrink");
-            usesCan = false;
-            StartCoroutine("ReduceSleep",1);
-        }
-        else if(hit)
+
+        else if (hit)
         {   //Debug.Log("HIT");
             Sleep += _sleepTick;
         }
-        if(!isSleeping)
+        if (!IsSleeping)
         {
-            
-            Sleep += _sleepTick;
+
+            Sleep += _sleepTick * Time.deltaTime;
         }
-        if(isSleeping)
+        if (IsSleeping)
         {
-            Sleep-= _sleepTick;
+            if(Time.time - _startedSleeping > 0.5f)
+            {
+                Sleep -= _sleepTick * 15 * Time.deltaTime;
+            }
         }
         // if obstacles hit increase sleep
         // else sleep + Deltatime
         _slider.value = Sleep;
         StartCoroutine("PulseImageEffect");
     }
- 
-    IEnumerator ReduceSleep(int value)
+
+    IEnumerator ReduceSleep(float value)
     {
-        for (int i = 0; i < 1000; i++)
+        float sleepDuration = CanDrinkDuration / 100f;
+        float sleepStep = value / 100f;
+        for (int i = 0; i < 100; i++)
         {
-            if(Sleep-_sleepTick >0)
-                Sleep -= _sleepTick;
-            yield return new WaitForSeconds(0.01f);
+            if (Sleep - _sleepTick > 0)
+                Sleep -= sleepStep;
+            yield return new WaitForSeconds(sleepDuration);
         }
     }
     private void SleepEffect()
     {
-        
+
         // for seconds hard Darkness and no Control
-        
-        
+        _car.OnSleep();
+
     }
-    
+
 }
