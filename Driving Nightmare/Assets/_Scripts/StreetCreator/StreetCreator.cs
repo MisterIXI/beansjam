@@ -33,7 +33,7 @@ public class StreetCreator : MonoBehaviour
         _currDir = Vector3.forward;
         _currPos = Vector3.zero;
         _lastDir = Vector2.zero;
-        ReferenceHolder.EventHandler.SubscribeToEvent("DebugButton", DebugCallback);
+        // ReferenceHolder.EventHandler.SubscribeToEvent("DebugButton", DebugCallback);
     }
 
     private void DebugCallback(InputAction.CallbackContext context)

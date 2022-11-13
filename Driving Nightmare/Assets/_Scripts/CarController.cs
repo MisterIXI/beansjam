@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
+    public float FogDensity = 0.02f;
     const float DEFAULT_SPEED = 0.5f;
     const float MIN_SPEED = 0.2f;
     public GameObject StreetSpawner;
@@ -35,8 +36,17 @@ public class CarController : MonoBehaviour
     {
         _eH.SubscribeToEvent("Steer", SteerCallback);
         _eH.SubscribeToEvent("Gas", GasCallback);
+        _eH.SubscribeToEvent("DebugButton", DebugCallback);
     }
 
+    private void DebugCallback(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            RenderSettings.fogDensity = FogDensity;
+            RenderSettings.fogColor = new Color(Random.Range(0f,0.1f), 0f, 0f, 1f);
+        }
+    }
     private void SteerCallback(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -120,6 +130,7 @@ public class CarController : MonoBehaviour
 
             }
         }
+
     }
 
 
