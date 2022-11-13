@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
     private float _actualSpeed;
     private float _finishProgress;
     private UI_SpriteRotating _progressRotator;
+    private AudioSource _audioSource;
     void Start()
     {
         _eH = ReferenceHolder.EventHandler;
@@ -34,6 +35,7 @@ public class CarController : MonoBehaviour
         _sc.ScrollSpeed = _gasInput * CarSpeed;
         _finishProgress = 0f;
         _progressRotator = ReferenceHolder.GameState.CarProgressRotator;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void SubscribeToEvents()
@@ -141,9 +143,23 @@ public class CarController : MonoBehaviour
 
             }
         }
-
+        SoundChange();
     }
-
+    private void SoundChange()
+    {
+        if(CarSpeed == 0)
+        {
+            if(_audioSource.isPlaying)
+                _audioSource.Pause();
+        }
+        else
+        {
+            if(!_audioSource.isPlaying)
+                _audioSource.Play();
+            _audioSource.pitch = (_actualSpeed /  (CarSpeed * DEFAULT_SPEED)) *0.5f + 0.5f ;
+            Debug.Log(_audioSource.pitch);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
