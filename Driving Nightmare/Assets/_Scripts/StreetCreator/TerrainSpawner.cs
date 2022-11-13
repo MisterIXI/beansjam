@@ -39,7 +39,7 @@ public class TerrainSpawner : MonoBehaviour
             SpawnFence(currPos);
             SpawnBeeHive(currPos);
             currDir = StreetChunk.Interpolate(startVector, targetVector, y / (float)(StreetCreator.VERTCOUNT * 3));
-            currPos += currDir * StreetCreator.EDGELENGTH;
+            currPos += currDir * StreetCreator.EDGELENGTH *3f;
         }
 
             return _objects;
