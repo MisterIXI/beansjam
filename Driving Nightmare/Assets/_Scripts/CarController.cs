@@ -127,7 +127,7 @@ public class CarController : MonoBehaviour
         if(other.gameObject.tag == "Obstacle")
         {
             Debug.Log("Trigger with obstacle");
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
     }
     private void OnDrawGizmos()
