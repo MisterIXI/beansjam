@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
+    public long FinishLine = 100000;
+
     public float FogDensity = 0.02f;
     const float DEFAULT_SPEED = 0.5f;
     const float MIN_SPEED = 0.2f;
@@ -20,7 +22,9 @@ public class CarController : MonoBehaviour
     private float _steerInput;
     private float _gasInput;
     private float _actualSpeed;
-
+    private float _finishProgress;
+    private UI_SpriteRotating _progressRotator;
+    private AudioSource _audioSource;
     void Start()
     {
         _eH = ReferenceHolder.EventHandler;
@@ -29,7 +33,9 @@ public class CarController : MonoBehaviour
         SubscribeToEvents();
         _gasInput = DEFAULT_SPEED;
         _sc.ScrollSpeed = _gasInput * CarSpeed;
-
+        _finishProgress = 0f;
+        _progressRotator = ReferenceHolder.GameState.CarProgressRotator;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void SubscribeToEvents()
@@ -44,7 +50,7 @@ public class CarController : MonoBehaviour
         if (context.performed)
         {
             RenderSettings.fogDensity = FogDensity;
-            RenderSettings.fogColor = new Color(Random.Range(0f,0.1f), 0f, 0f, 1f);
+            RenderSettings.fogColor = new Color(Random.Range(0f, 0.1f), 0f, 0f, 1f);
         }
     }
     private void SteerCallback(InputAction.CallbackContext context)
@@ -97,6 +103,13 @@ public class CarController : MonoBehaviour
         // lerp speed to desired input
         _actualSpeed = Mathf.Lerp(_actualSpeed, _gasInput * CarSpeed, Time.deltaTime);
         _sc.ScrollSpeed = _actualSpeed;
+
+        _finishProgress += _actualSpeed;
+        _progressRotator.progressPercent = _finishProgress / FinishLine;
+        if (_finishProgress >= FinishLine)
+        {
+            GetComponent<GameState>().Win();
+        }
         // sample two points on the street with raycasts front and back with offset
         Vector3 front = transform.position + transform.forward * raycast_offset;
         Vector3 back = transform.position - transform.forward * raycast_offset;
@@ -116,7 +129,7 @@ public class CarController : MonoBehaviour
                 float combination = Mathf.Abs(angle + eulerAngle);
                 combination %= 360f;
                 // Debug.Log("Angle: " + angle + " EulerAngles: " + eulerAngle + " Combination: " + combination);
-                if(combination > maxAngle*2)
+                if (combination > maxAngle * 2)
                 {
                     angle = 0f;
                 }
@@ -130,15 +143,30 @@ public class CarController : MonoBehaviour
 
             }
         }
-
+        SoundChange();
+    }
+    private void SoundChange()
+    {
+        if(CarSpeed == 0)
+        {
+            if(_audioSource.isPlaying)
+                _audioSource.Pause();
+        }
+        else
+        {
+            if(!_audioSource.isPlaying)
+                _audioSource.Play();
+            _audioSource.pitch = (_actualSpeed /  (CarSpeed * DEFAULT_SPEED)) *0.5f + 0.5f ;
+            // Debug.Log(_audioSource.pitch);
+        }
     }
 
-
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "Obstacle")
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Obstacle")
         {
             Debug.Log("Trigger with obstacle");
-            // Destroy(gameObject);
+            GetComponent<GameState>().Lose();
         }
     }
     private void OnDrawGizmos()

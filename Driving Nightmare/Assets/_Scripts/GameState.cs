@@ -17,8 +17,22 @@ public class GameState : MonoBehaviour
     public GameObject CreditsUI;
     public GameObject HudUI;
     public GameObject GameOverUI;
-    const float CARS_START_SPEED = 50f;
+    [HideInInspector]
+    public SleepManager SleepManager;
+    [HideInInspector]
+    public CanManager CanManager;
+    [HideInInspector]
+    public UI_SpriteRotating CarProgressRotator;
+    [HideInInspector]
+    public UI_Sprite_Animation CarAnimation;
 
+    const float CARS_START_SPEED = 50f;
+    private void Awake() {
+        SleepManager = HudUI.GetComponentInChildren<SleepManager>();
+        CanManager = HudUI.GetComponentInChildren<CanManager>();
+        CarProgressRotator = HudUI.GetComponentInChildren<UI_SpriteRotating>();
+        CarAnimation = HudUI.GetComponentInChildren<UI_Sprite_Animation>();
+    }
     private void Start() {
         _state = GameStateEnum.MainMenu;
         _car = GetComponent<CarController>();
@@ -33,6 +47,27 @@ public class GameState : MonoBehaviour
         HudUI.SetActive(true);
     }
 
+    public void Win()
+    {
+        _state = GameStateEnum.GameOver;
+        HudUI.SetActive(false);
+        GameOverUI.SetActive(true);
+    }
+
+    public void Lose()
+    {
+        _state = GameStateEnum.GameOver;
+        _car.CarSpeed = 0f;
+        HudUI.SetActive(false);
+        GameOverUI.SetActive(true);
+    }
+
+    public void On_Restart_Click()
+    {
+        // reload scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
     public void On_Credits_Click()
     {
         MenuUI.SetActive(false);
@@ -44,7 +79,7 @@ public class GameState : MonoBehaviour
         MenuUI.SetActive(true);
         CreditsUI.SetActive(false);
     }
-    
+
     public void On_Quit_Click()
     {
         Application.Quit();
