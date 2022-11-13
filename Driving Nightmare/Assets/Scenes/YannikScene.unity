@@ -805,6 +805,7 @@ MonoBehaviour:
   Bee: {fileID: 3159598174200232787, guid: b6824978bd0c94c44a18938b34494610, type: 3}
   Beehive: {fileID: 9135403608699406945, guid: 847bb3b1d9bce4a4c8f512fa9c2a43c8, type: 3}
   Car: {fileID: 4674991814636829153, guid: 1b63c8aad4853fe48a482a1586332e58, type: 3}
+  Pylons: {fileID: 8943397616216024928, guid: ce624d08d361cca4fb3bec2be19780e5, type: 3}
   offset: 0
 --- !u!1001 &1810524832
 PrefabInstance:
@@ -1346,6 +1347,10 @@ PrefabInstance:
     - target: {fileID: 7170887411899591087, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
       propertyPath: m_UseSpring
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996429909667479796, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8302432443896128841, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
       propertyPath: m_RootOrder

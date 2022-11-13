@@ -10,6 +10,7 @@ public class CarController : MonoBehaviour
     public float FogDensity = 0.02f;
     const float DEFAULT_SPEED = 0.75f;
     const float MIN_SPEED = 0.4f;
+    public AudioClip CrashSound;
     public GameObject StreetSpawner;
     public Transform SteeringWheel;
     public float GroundLevel = 5f;
@@ -235,6 +236,7 @@ public class CarController : MonoBehaviour
         {
             Debug.Log("Trigger with obstacle");
             GetComponent<GameState>().Lose();
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(CrashSound, 0.6f);
         }
     }
     private void OnDrawGizmos()

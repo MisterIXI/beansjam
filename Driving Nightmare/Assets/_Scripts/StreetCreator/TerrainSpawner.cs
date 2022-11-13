@@ -52,7 +52,7 @@ public class TerrainSpawner : MonoBehaviour
             SpawnFence(currPos);
             SpawnBeeHive(currPos);
             lastPylonSpawn++;
-            if (lastPylonSpawn > StreetCreator.VERTCOUNT / 3)
+            if (lastPylonSpawn > StreetCreator.VERTCOUNT / 2)
             {
                 lastPylonSpawn = 0;
                 SpawnPylon(currPos);
@@ -140,8 +140,8 @@ public class TerrainSpawner : MonoBehaviour
     private void SpawnPylon(Vector3 position)
     {
         Vector2 range = CalcStreet(position);
-        Vector3 raycastPosLeft = new Vector3(range[0] - 10f, position.y, position.z);
-        Vector3 raycastPosRight = new Vector3(range[1] + 10f, position.y, position.z);
+        Vector3 raycastPosLeft = new Vector3(range[0] - 13f, position.y + 50f, position.z);
+        Vector3 raycastPosRight = new Vector3(range[1] + 13f, position.y+ 50f, position.z);
         RaycastHit hitLeft;
         RaycastHit hitRight;
         if (Physics.Raycast(raycastPosLeft, Vector3.down, out hitLeft, 100f) && Physics.Raycast(raycastPosRight, Vector3.down, out hitRight, 100f))
@@ -150,6 +150,10 @@ public class TerrainSpawner : MonoBehaviour
             SpawnObject(Pylons, hitLeft.point);
             var go = SpawnObject(Pylons, hitRight.point);
             go.transform.RotateAround(go.transform.position, Vector3.up, 180f);
+        }
+        else
+        {
+            Debug.Log("No pylons spawned at " + position);
         }
     }
     private void SpawnFence(Vector3 position)
