@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 6320858726097795452}
   - component: {fileID: 7598627963842729623}
   - component: {fileID: 81407549729427347}
+  - component: {fileID: 1599599291}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -245,9 +246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cca759ac50d5248988056bd683b19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FogDensity: 0.02
   StreetSpawner: {fileID: 0}
   GroundLevel: 5
-  CarSpeed: 50
+  CarSpeed: 0
   SteerStrength: 60
   raycast_offset: 5.3
   maxAngle: 80
@@ -317,6 +319,22 @@ MonoBehaviour:
   Bee: {fileID: 3159598174200232787, guid: b6824978bd0c94c44a18938b34494610, type: 3}
   Beehive: {fileID: 9135403608699406945, guid: 847bb3b1d9bce4a4c8f512fa9c2a43c8, type: 3}
   offset: 0
+--- !u!114 &1599599291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417011595865799566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a60bcb96e8cf6246927c7f06aa2c0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuUI: {fileID: 0}
+  CreditsUI: {fileID: 0}
+  HudUI: {fileID: 0}
+  GameOverUI: {fileID: 0}
 --- !u!1 &7598627963126766787
 GameObject:
   m_ObjectHideFlags: 0
