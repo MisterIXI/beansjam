@@ -994,6 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wheel: {fileID: 5346704735089612711}
+  progressPercent: 0
 --- !u!1 &5346704735376085605
 GameObject:
   m_ObjectHideFlags: 0
