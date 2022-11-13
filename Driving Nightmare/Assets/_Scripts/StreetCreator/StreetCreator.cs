@@ -7,7 +7,7 @@ public class StreetCreator : MonoBehaviour
 {
     public const int VERTCOUNT = 60;
     public const float EDGELENGTH = 1f;
-    public const float GROUNDSTRETCHFACTOR = 3f;
+    public const float GROUNDSTRETCHFACTOR = 6f;
 
     public float ScrollSpeed = 5f;
 
@@ -88,7 +88,7 @@ public class StreetCreator : MonoBehaviour
         _lastDir = newSC.TargetChange;
         newChunk.AddComponent<MeshCollider>();
 
-        if (_streetChunks.Count > 3)
+        if (_streetChunks.Count > 4)
         {
             Destroy(_streetChunkObjects[0]);
             _streetChunkObjects.RemoveAt(0);
