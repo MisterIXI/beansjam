@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanManager : MonoBehaviour
 {
-    public int CanUses{get; set;}
+    public int CanUses=3;
     private int Maxuses=3;
     private int tempuse=0;
     public GameObject[] canObjects;
