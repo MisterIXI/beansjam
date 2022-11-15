@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5346704733405604418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 5346704735260697569}
   - component: {fileID: 5346704735260697582}
   - component: {fileID: 5346704735260697583}
-  - component: {fileID: 5346704735260697580}
+  - component: {fileID: 7555397419966448468}
   m_Layer: 5
   m_Name: CarAnimation
   m_TagString: Untagged
@@ -985,7 +985,7 @@ MonoBehaviour:
   - {fileID: -1826531792, guid: 775c799fc5c5e7647a4d697c8eb468dd, type: 3}
   - {fileID: 1748528483, guid: 775c799fc5c5e7647a4d697c8eb468dd, type: 3}
   - {fileID: -1218863619, guid: 775c799fc5c5e7647a4d697c8eb468dd, type: 3}
---- !u!114 &5346704735260697580
+--- !u!114 &7555397419966448468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -994,11 +994,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5346704735260697578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2238b8c839621744b01f26a7a755816, type: 3}
+  m_Script: {fileID: 11500000, guid: e28f38c74e3314c47b61482f3ce68388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Wheel: {fileID: 5346704735089612711}
-  progressPercent: 0
 --- !u!1 &5346704735376085605
 GameObject:
   m_ObjectHideFlags: 0

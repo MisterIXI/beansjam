@@ -18,6 +18,7 @@ public class GameState : MonoBehaviour
     public GameObject HudUI;
     public GameObject WinObject;
     public GameObject LoseObject;
+    public GameObject RadiotextTime;
     public GameObject GameOverUI;
     [HideInInspector]
     public SleepManager SleepManager;
@@ -27,6 +28,7 @@ public class GameState : MonoBehaviour
     public UI_SpriteRotating CarProgressRotator;
     [HideInInspector]
     public UI_Sprite_Animation CarAnimation;
+    public CameraController cameraController;
 
     const float CARS_START_SPEED = 150f;
     private void Awake() {
@@ -47,30 +49,40 @@ public class GameState : MonoBehaviour
         _car.CarSpeed = CARS_START_SPEED;
         MenuUI.SetActive(false);
         HudUI.SetActive(true);
+        RadiotextTime.GetComponent<TimeText>().RadioTimeRun(true);
+        cameraController.gameRunning = true;
     }
-
+    
     public void Win()
     {
         _state = GameStateEnum.GameOver;
         HudUI.SetActive(false);
         GameOverUI.SetActive(true);
         WinObject.SetActive(true);
+        // WinObject.GetComponent<Animator>().Play("BlendInAnimation");
         _car.StopCar();
+        RadiotextTime.GetComponent<TimeText>().RadioTimeRun(false);
+        cameraController.gameRunning = false;
     }
 
     public void Lose()
     {
+        
         _state = GameStateEnum.GameOver;
         _car.CarSpeed = 0f;
         HudUI.SetActive(false);
         GameOverUI.SetActive(true);
         LoseObject.SetActive(true);
+        // LoseObject.GetComponent<Animator>().Play("LoseBlendInAnimation");
         _car.StopCar();
+        RadiotextTime.GetComponent<TimeText>().RadioTimeRun(false);
+        cameraController.gameRunning = false;
     }
 
     public void On_Restart_Click()
     {
         // reload scene
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         Time.timeScale = 1f;
     }
