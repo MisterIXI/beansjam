@@ -132,15 +132,37 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "86c8cf7c-cc15-451b-9752-db52f822c655",
+                    "name": "Controller",
+                    "id": "d355e37a-81f0-489d-8206-471a51834e48",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "de8162fa-ccb3-49ad-81fc-dd678039f6bd",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "9f43eb8f-f6d9-4ca1-986e-81696cb4a8d0",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Gas",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
