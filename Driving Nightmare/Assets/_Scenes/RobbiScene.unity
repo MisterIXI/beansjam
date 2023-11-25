@@ -1137,6 +1137,14 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 1365663577}
+    - target: {fileID: 1599599292, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+      propertyPath: m_Volume
+      value: 0.153
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777752993, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1897417248656205385, guid: 87a34b8e075788f4c875fa60c84ca05a, type: 3}
       propertyPath: m_RootOrder
       value: 1

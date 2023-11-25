@@ -236,7 +236,7 @@ public class CarController : MonoBehaviour
         {
             Debug.Log("Trigger with obstacle");
             GetComponent<GameState>().Lose();
-            Camera.main.GetComponent<AudioSource>().PlayOneShot(CrashSound, 0.6f);
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(CrashSound, 0.03f);
         }
     }
     private void OnDrawGizmos()
