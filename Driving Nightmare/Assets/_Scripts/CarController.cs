@@ -135,8 +135,8 @@ public class CarController : MonoBehaviour
 
     public void WakeUp()
     {
-        // _steerInput = _desiredSteer;
-        // _gasInput = _desiredGas;
+        _steerInput = _desiredSteer;
+        _gasInput = _desiredGas;
     }
     private void Update()
     {
